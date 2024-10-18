@@ -1,14 +1,8 @@
-# Importa pandas library for inmporting CSV
+# Importing Pandas and Deep Translator library
 import pandas as pd 
 from deep_translator import GoogleTranslator
 
-# translated = GoogleTranslator(source='auto', target='pt').translate("=DISODIUM TETRAMETHYLHEXADECENYLCYSTEINE FORMYLPROLINATE")
-# translated = translated.replace('=','')
-
-
-# print(translated)
-
-df = pd.read_csv('.\cosing-ingredients.csv', delimiter=';')
+df = pd.read_csv('.\cosing-ingredients.csv', delimiter=';') # Creating a database
 
 
 
