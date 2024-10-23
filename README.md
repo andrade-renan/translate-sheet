@@ -36,7 +36,7 @@ This script reads a CSV file containing cosmetic ingredient data (INCI name, Fun
 To run the script, you need to install the following Python libraries:
 
 ```bash
-pip install pandas deep-translator
+pip install -r requirements.txt
 ```
 
 ### 2. Prepare Your CSV File

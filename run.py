@@ -32,7 +32,7 @@ def get_translation(text, src='auto', tgt='pt'):
             # Salvar o dicionário atualizado após cada nova tradução
             with open(translations_path, 'w', encoding='utf-8') as file:
                 json.dump(translations, file, ensure_ascii=False)
-        print(f"Sucesso ao traduzir {text}")
+        # print(f"Sucesso ao traduzir {text}")
         return translations[text]
     except Exception as e:
         print(f"Erro ao traduzir {text}: {e}")
