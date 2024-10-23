@@ -5,16 +5,16 @@ import json
 import os
 
 # capturando a planilha no formato inicial com encoding em iso-8859-1
-df = pd.read_csv('.\cosing-ingredients.csv', delimiter=';', encoding='iso-8859-1')
+df = pd.read_csv('.\data\cosing-ingredients.csv', delimiter=';', encoding='iso-8859-1')
 
 # salvando a planilha com formato utf-8
-df.to_csv('.\cosing-ingredients-utf-8.csv', index=False, encoding='utf-8')
+df.to_csv('.\data\cosing-ingredients-utf-8.csv', index=False, encoding='utf-8')
 
 # capturando a planilha formatada
-df = pd.read_csv('.\cosing-ingredients-utf-8.csv', encoding='utf-8')
+df = pd.read_csv('.\data\cosing-ingredients-utf-8.csv', encoding='utf-8')
 
 # Caminho para o arquivo JSON onde as traduções são armazenadas
-translations_path = 'translations.json'
+translations_path = r'data\translations.json'
 
 # Tentar carregar traduções existentes
 if os.path.exists(translations_path):
@@ -32,7 +32,7 @@ def get_translation(text, src='auto', tgt='pt'):
             # Salvar o dicionário atualizado após cada nova tradução
             with open(translations_path, 'w', encoding='utf-8') as file:
                 json.dump(translations, file, ensure_ascii=False)
-        # print(f"Sucesso ao traduzir {text}")
+        
         return translations[text]
     except Exception as e:
         print(f"Erro ao traduzir {text}: {e}")
@@ -44,8 +44,8 @@ for index, row in df.iterrows():
     df.at[index, 'Function'] = get_translation(row['Function'])
     
     # Salvando sempre para evitar perda de dados
-    df.to_csv('Cosing-ingredients-translated-partial.csv', index=False, encoding='utf-8', sep=";")
+    df.to_csv('data\Cosing-ingredients-translated-partial.csv', index=False, encoding='utf-8', sep=";")
 
 # Salvando o dataframe completo ao final do processo
-df.to_csv('Cosing-ingredients-translated.csv', index=False, encoding='utf-8', sep=";")
+df.to_csv('data\Cosing-ingredients-translated.csv', index=False, encoding='utf-8', sep=";")
 
